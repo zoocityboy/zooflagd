@@ -1,0 +1,13 @@
+version: '3.9'
+ 
+services:
+  flagd:
+    image: ghcr.io/open-feature/flagd:latest
+    container_name: 'flagd'
+    volumes:
+      - ./flagd/:/etc/flagd/
+    tty: true
+    stdin_open: true
+    command: start --uri file:/etc/flagd/flags.flagd.json
+    ports:
+      - 8013:8013
